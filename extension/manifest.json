@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Mentor Voice Spike",
+  "version": "0.0.1",
+  "description": "Day-1 voice feasibility test",
+  "permissions": ["sidePanel", "tts", "storage"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Open mentor panel" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "commands": {
+    "toggle-listen": {
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
+      "description": "Start/stop listening in the mentor panel (press, not hold)"
+    }
+  }
+}
