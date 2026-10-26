@@ -1,0 +1,31 @@
+# secrets
+.env
+*.key
+*.pem
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# local data (personal!)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/backups/
+data/enrichment_cache/
+data/profile.json
+data/solved_history.json
+
+# third-party datasets (e.g., company-wise lists, later) are not mine to commit
+data/company_lists/
+
+# editor / os
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# extension build output (if any)
+extension/node_modules/
