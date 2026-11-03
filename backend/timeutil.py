@@ -23,8 +23,15 @@ def utc_now_iso() -> str:
 
 
 def parse_iso(s: str) -> datetime:
-    """Parse '...Z' or '...+00:00' (with or without fractions) into an aware datetime."""
-    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    """Parse '...Z' or '...+HH:MM' (with or without fractions) into an aware datetime.
+
+    A string with no timezone is rejected: guessing would silently shift the time
+    by the machine's UTC offset (5h30m here) and corrupt ordering.
+    """
+    dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+    if dt.tzinfo is None:
+        raise ValueError(f"timestamp has no timezone (expected 'Z' or an offset): {s!r}")
+    return dt
 
 
 def normalize_ts(s: str) -> str:
